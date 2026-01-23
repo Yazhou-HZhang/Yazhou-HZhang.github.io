@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Adaptive-ACT</title>
+    <meta name="author" content="Yazhou Zhang">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+  </head>
+
+  <body>
+    <table style="width:100%;max-width:900px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+      <tbody>
+        <tr>
+          <td style="padding:20px">
+
+            <p><a href="../index.html">← Back to home</a></p>
+
+            <p style="text-align:center">
+              <name>Adaptive-ACT: Adaptive Action Chunking for Manipulation</name>
+            </p>
+
+            <p style="text-align:center">
+              <em>CS224R Final Project</em> | 03/2025 – 06/2025
+            </p>
+
+            <p style="text-align:center">
+              <a href="../reports/adaptive-act-report.pdf" target="_blank">report</a>
+              &nbsp;/&nbsp;
+              <a href="../posters/adaptive-act-poster.pdf" target="_blank">poster</a>
+            </p>
+
+            <p>
+              <img src="../images/adaptive_act.jpg" width="100%" alt="Adaptive-ACT overview">
+            </p>
+
+            <heading>Overview</heading>
+            <p>
+              Action Chunking with Transformers (ACT) enables temporally coherent control for manipulation
+              by predicting fixed-length action chunks. However, a single fixed chunk size introduces a trade-off
+              between temporal consistency and fine-grained responsiveness. In this project, we propose
+              <strong>Adaptive-ACT</strong>, a method that dynamically selects action chunk lengths online to better
+              handle varying task phases and contact conditions.
+            </p>
+
+            <heading>Method</heading>
+            <p>
+              We build on a pretrained ACT policy and introduce an adaptive chunk-length selector that operates
+              on top of the frozen base policy. At each decision step, the selector chooses among multiple
+              candidate chunk sizes, allowing the system to switch between longer chunks for smooth motion
+              and shorter chunks for precise, contact-rich control.
+            </p>
+            <ul>
+              <li>
+                A frozen ACT backbone trained with fixed-length action chunks.
+              </li>
+              <li>
+                A lightweight <strong>PPO-trained selector</strong> that outputs discrete chunk-length choices.
+              </li>
+              <li>
+                Residual corrections applied within each chunk to improve robustness under distribution shift.
+              </li>
+            </ul>
+
+            <heading>Experimental Setup</heading>
+            <p>
+              We evaluate Adaptive-ACT in simulated manipulation tasks with varying dynamics and contact
+              requirements. Tasks include free-space reaching, contact initiation, and fine manipulation,
+              where responsiveness to unexpected interactions is critical.
+            </p>
+
+            <heading>Results</heading>
+            <ul>
+              <li>
+                Adaptive-ACT consistently outperforms fixed-chunk ACT baselines across tasks requiring both
+                smooth motion and precise control.
+              </li>
+              <li>
+                Dynamic chunk selection improves success rates in contact-rich phases without sacrificing
+                overall trajectory coherence.
+              </li>
+              <li>
+                The selector learns intuitive strategies, favoring longer chunks in free motion and shorter
+                chunks near contact.
+              </li>
+            </ul>
+
+            <heading>Key Takeaways</heading>
+            <ul>
+              <li>
+                Fixed action chunk sizes impose unnecessary constraints on manipulation policies.
+              </li>
+              <li>
+                Adaptive temporal abstraction provides a practical way to balance coherence and reactivity.
+              </li>
+              <li>
+                The approach is modular and can be applied to other chunked-action policy architectures.
+              </li>
+            </ul>
+
+            <heading>Tools & Keywords</heading>
+            <p>
+              Action Chunking with Transformers (ACT), Reinforcement Learning, PPO,
+              Temporal Abstraction, Manipulation, Policy Residuals
+            </p>
+
+            <p style="margin-top:30px">
+              <a href="../index.html">← Back to home</a>
+            </p>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
