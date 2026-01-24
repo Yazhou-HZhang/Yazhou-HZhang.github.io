@@ -1,0 +1,152 @@
+/* File: projects/project.css
+   Shared styles for all project subpages
+   Clean, compact, and consistent
+*/
+
+/* -----------------------------
+   Global variables
+----------------------------- */
+:root {
+  --page-max-width: 900px;
+  --page-padding: 20px;
+
+  --title-size: 28px;
+  --section-size: 20px;
+
+  --line-height: 1.5;
+}
+
+/* -----------------------------
+   Base typography
+----------------------------- */
+body {
+  line-height: var(--line-height);
+}
+
+/* -----------------------------
+   Main container
+----------------------------- */
+.project-container {
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: var(--page-padding);
+}
+
+/* -----------------------------
+   Header
+----------------------------- */
+.project-title {
+  text-align: center;
+  font-size: var(--title-size);
+  font-weight: 600;
+  margin: 0 0 6px 0;
+}
+
+.project-meta {
+  text-align: center;
+  margin: 0 0 6px 0;
+}
+
+.project-links {
+  text-align: center;
+  margin: 0 0 18px 0;
+}
+
+/* -----------------------------
+   Section titles
+----------------------------- */
+.section-title {
+  font-size: var(--section-size);
+  font-weight: 600;
+
+  /* More separation BEFORE sections */
+  margin-top: 32px;
+
+  /* Tighter spacing under title */
+  margin-bottom: 6px;
+}
+
+/* -----------------------------
+   Media / hero images
+----------------------------- */
+.project-hero {
+  margin: 12px 0 10px 0;
+}
+
+.project-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* -----------------------------
+   Two-column project grid
+----------------------------- */
+.project-grid {
+  width: 100%;
+  border-collapse: separate;
+
+  /* Tighten gap after "Approaches" */
+  margin-top: 4px;
+}
+
+.project-col {
+  padding: 10px 12px;   /* tighter than before */
+  vertical-align: top;
+  width: 50%;
+}
+
+/* Column titles */
+.project-col > strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Images inside columns */
+.project-col img {
+  width: 100%;
+  height: auto;
+  margin: 4px 0;
+  display: block;
+}
+
+/* Lists inside columns */
+.project-col ul {
+  margin: 4px 0 0 0;
+  padding-left: 18px;
+}
+
+.project-col li {
+  margin-bottom: 4px;
+}
+
+/* -----------------------------
+   General lists
+----------------------------- */
+ul {
+  padding-left: 18px;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+/* -----------------------------
+   Make images responsive everywhere
+----------------------------- */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* -----------------------------
+   Mobile layout
+----------------------------- */
+@media (max-width: 800px) {
+  .project-col {
+    display: block;
+    width: 100%;
+    padding: 8px 0;
+  }
+}

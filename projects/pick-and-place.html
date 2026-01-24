@@ -4,66 +4,130 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Pick and Place</title>
+
     <meta name="author" content="Yazhou Zhang">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <meta name="googlebot" content="noindex, nofollow">
+
     <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="./project.css">
   </head>
 
   <body>
-    <table style="width:100%;max-width:900px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-      <tbody>
-        <tr>
-          <td style="padding:20px">
+    <div class="project-container">
 
-            <p><a href="../index.html">← Back to home</a></p>
+      <p><a href="../index.html">← Back to home</a></p>
 
-            <p style="text-align:center">
-              <name>Robot Perception Pick-and-Place: Modular vs End-to-End</name>
-            </p>
+      <p class="project-title">Robot Perception Pick-and-Place: Modular vs End-to-End</p>
 
-            <p style="text-align:center">
-              <em>Robot Perception</em> | 09/2025 – 12/2025
-            </p>
+      <p class="project-meta">
+        <em>EE227: Robot Perception</em> | 09/2025 – 12/2025
+      </p>
 
-            <p style="text-align:center">
-              <a href="#">video (placeholder)</a> &nbsp;/&nbsp; <a href="#">report (placeholder)</a>
-            </p>
+      <p class="project-links">
+        <a href="https://drive.google.com/file/d/17B-lFORNtLnjmDKzcoUy3QajqDEYc-H8/view?usp=drive_link" target="_blank">video (modular)</a>
+        /
+        <a href="https://drive.google.com/file/d/1jhog9dQCel3yIELaJ0KyylYTpSEPAvT5/view?usp=drive_link" target="_blank">video (end-to-end)</a>
+        /
+        <a href="https://drive.google.com/drive/folders/1CBMK7HOYv9T11qmC5NyjaJSIWIDjyPaW?usp=sharing" target="_blank">drive</a>
+      </p>
 
-            <p>
-              <img src="../images/pnp.jpg" width="100%" alt="Pick-and-place project media (placeholder image)">
-            </p>
+      <p class="section-title">Overview</p>
+      <p>
+        Compared a <strong>modular pose-based pipeline</strong> and an <strong>end-to-end action-affordance model</strong>
+        for robotic pick-and-place, highlighting trade-offs between interpretability, robustness, and generalization.
+      </p>
 
-            <heading>Summary</heading>
-            <p>
-              (Placeholder) One paragraph describing the pick-and-place task and comparison goal.
-            </p>
+      <p class="section-title">Approaches</p>
 
-            <heading>My Contributions</heading>
-            <ul>
-              <li>(Placeholder) Modular pipeline: U-Net segmentation + masking + ICP pose estimation.</li>
-              <li>(Placeholder) End-to-end pipeline: action affordance prediction from images.</li>
-              <li>(Placeholder) Integration and evaluation across scenes/clutter/unseen objects.</li>
-            </ul>
+      <table class="project-grid">
+        <tbody>
+          <tr>
+            <!-- Modular -->
+            <td class="project-col">
+              <strong>Modular Pipeline</strong>
+              <p>
+                <img src="../media/pick-and-place/modular.gif" alt="Modular pipeline GIF">
+              </p>
+              <ul>
+                <li>U-Net segmentation → masking → ICP pose estimation (RGB-D).</li>
+                <li>Estimated poses used for grasp planning and execution.</li>
+                <li><strong>Assumptions:</strong> known object geometry, good depth, accurate segmentation, reasonable ICP initialization.</li>
+              </ul>
+            </td>
 
-            <heading>Results</heading>
-            <ul>
-              <li>(Placeholder) Comparison results and failure analysis.</li>
-              <li>(Placeholder) When modular vs end-to-end works better.</li>
-            </ul>
+            <!-- End-to-End -->
+            <td class="project-col">
+              <strong>End-to-End Affordance Learning</strong>
+              <p>
+                <img src="../media/pick-and-place/empty bin 15-15.gif" alt="End-to-end affordance GIF">
+              </p>
+              <ul>
+                <li>Predicts <strong>action affordances</strong> directly from RGB.</li>
+                <li>Fully convolutional spatial-action maps using local geometric cues.</li>
+                <li>Affordances evaluated over <strong>8 discrete rotation bins</strong> for robust orientation search.</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-            <heading>Notes</heading>
-            <p>
-              (Placeholder) Design trade-offs, interpretability, and future work.
-            </p>
+      <p class="section-title">Key Improvements</p>
+      <table style="width:100%; border-collapse:separate; margin-top:0px;">
+        <tbody>
+          <!-- Modular row -->
+          <tr>
+            <td style="padding:10px 12px; vertical-align:top; width:15%; font-weight:600;">
+              Modular
+            </td>
+            <td style="padding:10px 12px; vertical-align:top;">
+              <ul style="margin:0;">
+                <li>
+                  Built a full pose-based pick-and-place stack in PyBullet (UR5 + bins + RGB-D top-down camera),
+                  including IK-based tool motion and a grasp primitive with success checking.
+                </li>
+                <li>
+                  Implemented segmentation + depth → point cloud → ICP alignment, and compared
+                  <em>state-based</em> (oracle pose) vs <em>ICP-based</em> execution to analyze pose error sensitivity.
+                </li>
+              </ul>
+            </td>
+          </tr>
 
-            <p style="margin-top:30px"><a href="../index.html">← Back to home</a></p>
+          <!-- End-to-end row -->
+          <tr>
+            <td style="padding:10px 12px; vertical-align:top; width:15%; font-weight:600;">
+              End-to-end
+            </td>
+            <td style="padding:10px 12px; vertical-align:top;">
+              <ul style="margin:0;">
+                <li>
+                  Used dense Gaussian affordance scoremaps and evaluated grasps over
+                  <strong>8 discrete rotation bins</strong> for robust orientation search.
+                </li>
+                <li>
+                  Added <strong>failure suppression</strong> using a Gaussian mask over previously failed grasps,
+                  improving clutter performance from <strong>8/15 → 15/15 objects</strong>.
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-          </td>
-        </tr>
-      </tbody>
-    </table>
+
+
+      <p class="section-title">Takeaways</p>
+      <ul>
+        <li><strong>Modular:</strong> interpretable and precise, but brittle to perception errors.</li>
+        <li><strong>End-to-end:</strong> generalizes better and is more robust in clutter.</li>
+        <li>The choice depends on deployment needs and tolerance for failure modes.</li>
+      </ul>
+
+      <p style="margin-top:30px;"><a href="../index.html">← Back to home</a></p>
+
+    </div>
   </body>
 </html>

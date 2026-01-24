@@ -3,67 +3,108 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Rice Manipulation</title>
+    <title>Mobile Manipulation (Rice Cooking)</title>
+
     <meta name="author" content="Yazhou Zhang">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Unlisted -->
     <meta name="robots" content="noindex, nofollow">
     <meta name="googlebot" content="noindex, nofollow">
+
     <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="./project.css">
   </head>
 
   <body>
-    <table style="width:100%;max-width:900px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-      <tbody>
-        <tr>
-          <td style="padding:20px">
+    <div class="project-container">
 
-            <p><a href="../index.html">← Back to home</a></p>
+      <p><a href="../index.html">← Back to home</a></p>
 
-            <p style="text-align:center">
-              <name>Mobile Manipulation for Semi-Autonomous Rice Cooking</name>
-            </p>
+      <p class="project-title">Mobile Manipulation for Semi-Autonomous Rice Cooking</p>
 
-            <p style="text-align:center">
-              <em>Course Project</em> | 03/2025 – 06/2025
-            </p>
+      <p class="project-meta">
+        <em>CS225A: Experimental Robotics</em> | 03/2025 – 06/2025
+      </p>
 
-            <p style="text-align:center">
-              <a href="#">video (placeholder)</a> &nbsp;/&nbsp; <a href="#">report (placeholder)</a>
-            </p>
+      <p class="project-links">
+        <a href="https://drive.google.com/file/d/10et5QLA4z91Edgjnu6dNngGsvKi-qIiU/view?usp=drive_link" target="_blank">video</a>
+        /
+        <a href="../reports/rice-manipulation.pdf" target="_blank">report</a>
+      </p>
 
-            <p>
-              <img src="../images/rice_cooking.jpg" width="100%" alt="Rice cooking project media (placeholder image)">
-            </p>
+      <div class="project-hero">
+        <img src="../media/rice-manipulation/RobotGo final demo.gif" alt="Rice cooking mobile manipulation overview">
+      </div>
 
-            <heading>Summary</heading>
-            <p>
-              (Placeholder) One paragraph describing the kitchen task pipeline and system goals.
-            </p>
+      <p class="section-title">Overview</p>
+      <p>
+        Developed a <strong>mobile manipulation system</strong> for semi-autonomous kitchen tasks,
+        integrating perception, motion planning, and control to execute a complete rice-cooking workflow
+        in a semi-structured environment.
+      </p>
 
-            <heading>My Contributions</heading>
-            <ul>
-              <li>(Placeholder) Sim-to-real workflow and system integration.</li>
-              <li>(Placeholder) Hierarchical state machine for multi-stage tasks.</li>
-              <li>(Placeholder) Perception, planning, and control integration.</li>
-            </ul>
+      <p class="section-title">Approach</p>
+      <ul>
+        <li>
+          Built a <strong>sim-to-real pipeline</strong> using MuJoCo and OpenSai to prototype perception
+          and validate full-stack control before hardware deployment.
+        </li>
+        <li>
+          Designed a <strong>hierarchical finite-state machine</strong> coordinating perception, motion
+          planning, and control for multi-stage tasks including container pickup, rice pouring, water
+          dispensing, and cooker activation.
+        </li>
+        <li>
+          Integrated <strong>vision-guided manipulation</strong> using wrist-mounted RGB-D sensing and
+          marker-based localization, with retry and recovery logic for robustness.
+        </li>
+        <li>
+          Implemented task-specific motion primitives combining <strong>Cartesian control</strong>,
+          <strong>joint-space execution</strong>, and <strong>force-based interaction</strong>.
+        </li>
+      </ul>
 
-            <heading>Results</heading>
-            <ul>
-              <li>(Placeholder) Task success rate / accuracy / robustness notes.</li>
-              <li>(Placeholder) Key demos and limitations.</li>
-            </ul>
+      <p class="section-title">My Contributions</p>
+      <ul>
+        <li>
+          Implemented the full task-level state machine, including success checks, failure handling,
+          and perception-triggered retries.
+        </li>
+        <li>
+          Developed and tuned manipulation primitives for grasping, pouring, and button pressing,
+          ensuring stable contact transitions and repeatable execution.
+        </li>
+        <li>
+          Integrated perception outputs with motion planning and control to enable reliable end-to-end
+          task execution on a mobile manipulator.
+        </li>
+      </ul>
 
-            <heading>Notes</heading>
-            <p>
-              (Placeholder) Future improvements (e.g., better perception, closed-loop pouring).
-            </p>
+      <p class="section-title">Outcome & Impact</p>
+      <ul>
+        <li>
+          Achieved centimeter-level positional accuracy and stable contact transitions during manipulation.
+        </li>
+        <li>
+          Demonstrated reliable execution of complex, multi-step kitchen tasks in a semi-structured setting.
+        </li>
+      </ul>
 
-            <p style="margin-top:30px"><a href="../index.html">← Back to home</a></p>
+      <p class="section-title">Takeaways</p>
+      <ul>
+        <li>
+          Hierarchical task decomposition and explicit state management are critical for long-horizon
+          mobile manipulation.
+        </li>
+        <li>
+          Simulation-first development significantly reduced hardware debugging time and improved safety.
+        </li>
+      </ul>
 
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <p style="margin-top:30px;"><a href="../index.html">← Back to home</a></p>
+
+    </div>
   </body>
 </html>

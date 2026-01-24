@@ -4,66 +4,94 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Autonomous Racing</title>
+
     <meta name="author" content="Yazhou Zhang">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Unlisted -->
     <meta name="robots" content="noindex, nofollow">
     <meta name="googlebot" content="noindex, nofollow">
+
     <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="./project.css">
   </head>
 
   <body>
-    <table style="width:100%;max-width:900px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-      <tbody>
-        <tr>
-          <td style="padding:20px">
+    <div class="project-container">
 
-            <p><a href="../index.html">← Back to home</a></p>
+      <p><a href="../index.html">← Back to home</a></p>
 
-            <p style="text-align:center">
-              <name>RL for Autonomous Racing with Dynamic Opponents (AA228)</name>
-            </p>
+      <p class="project-title">RL for Autonomous Racing with Dynamic Opponents</p>
 
-            <p style="text-align:center">
-              <em>Final Project</em> | 09/2025 – 12/2025
-            </p>
+      <p class="project-meta">
+        <em>AA228: Decision Making Under Uncertainty</em> | 03/2025 – 06/2025
+      </p>
 
-            <p style="text-align:center">
-              <a href="#">video (placeholder)</a> &nbsp;/&nbsp; <a href="#">report (placeholder)</a>
-            </p>
+      <p class="project-links">
+        <a href="https://drive.google.com/drive/folders/1EBvCKC4naMYwvVxu6cOY4pFeuYfEBAK_?usp=drive_link" target="_blank">video</a>
+        /
+        <a href="../reports/rice-manipulation.pdf" target="_blank">report</a>
+      </p>
+      
+      <div class="project-hero">
+        <video controls autoplay muted loop playsinline style="width:100%;">
+          <source src="../media/autonomous-racing/race.mov" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-            <p>
-              <img src="../images/aa228_racing.jpg" width="100%" alt="Autonomous racing project media (placeholder image)">
-            </p>
+      <p class="section-title">Overview</p>
+      <p>
+        Trained a <strong>PPO</strong> policy for high-speed autonomous racing in a
+        <strong>multi-agent environment with dynamic opponents</strong>. The agent operates from an
+        <strong>ego-centric occupancy-grid observation</strong> and outputs continuous control
+        (<strong>steering</strong> and <strong>acceleration</strong>) to complete laps efficiently
+        while avoiding collisions.
+      </p>
 
-            <heading>Summary</heading>
-            <p>
-              (Placeholder) One paragraph describing the environment, objective, and approach.
-            </p>
+      <p class="section-title">Environment & MDP Design</p>
+      <p>
+        Extended <strong>HighwayEnv’s RacetrackEnv (<a href="https://github.com/Farama-Foundation/HighwayEnv" target="_blank">racetrack-v0</a>)</strong>
+        into a dynamic racing benchmark by customizing track geometry and introducing opponent vehicles
+        with controlled density and behavior. The agent observes a local occupancy grid centered on itself,
+        encoding nearby vehicles and track context to support generalization across layouts. Environment
+        transitions follow realistic vehicle dynamics with independent opponent motion, forming a
+        non-stationary decision-making problem. Rewards balance forward progress and speed with safety
+        constraints, penalizing collisions and off-track behavior.
+      </p>
 
-            <heading>My Contributions</heading>
-            <ul>
-              <li>(Placeholder) Environment modifications and observation design.</li>
-              <li>(Placeholder) PPO training setup and evaluation protocol.</li>
-              <li>(Placeholder) Baselines and analysis.</li>
-            </ul>
+      <p class="section-title">Key Implementation Choices</p>
+      <ul>
+        <li>
+          <strong>Observation:</strong> ego-centric occupancy grid capturing local traffic and track context.
+        </li>
+        <li>
+          <strong>Action space:</strong> continuous steering and longitudinal acceleration for smooth,
+          high-speed control and overtaking.
+        </li>
+        <li>
+          <strong>Reward design:</strong> progress- and speed-driven objectives with strong safety penalties
+          for collisions and boundary violations.
+        </li>
+      </ul>
 
-            <heading>Results</heading>
-            <ul>
-              <li>(Placeholder) Lap time / collision rate / generalization results.</li>
-              <li>(Placeholder) Key findings and limitations.</li>
-            </ul>
+      <p class="section-title">Takeaways</p>
+      <ul>
+        <li>
+          Ego-centric occupancy grids provide an effective representation for multi-agent racing.
+        </li>
+        <li>
+          Dynamic opponents transform racing into a decision-making problem rather than a pure
+          trajectory-following task.
+        </li>
+        <li>
+          Simple reward shaping can yield stable high-speed behavior in non-stationary environments.
+        </li>
+      </ul>
 
-            <heading>Notes</heading>
-            <p>
-              (Placeholder) Future directions (e.g., hybrid MPC, improved reward shaping).
-            </p>
+      <p style="margin-top:30px;"><a href="../index.html">← Back to home</a></p>
 
-            <p style="margin-top:30px"><a href="../index.html">← Back to home</a></p>
-
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    </div>
   </body>
 </html>
