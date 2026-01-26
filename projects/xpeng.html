@@ -1,70 +1,143 @@
-<!-- File: projects/xpeng.html -->
+<!-- File: projects/xpeng-dexterous-hand.html -->
 <!DOCTYPE HTML>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>XPENG</title>
+    <title>XPENG Humanoid – Dexterous Hand Manipulation</title>
+
     <meta name="author" content="Yazhou Zhang">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Unlisted -->
     <meta name="robots" content="noindex, nofollow">
     <meta name="googlebot" content="noindex, nofollow">
 
     <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="./project.css">
   </head>
 
   <body>
-    <table style="width:100%;max-width:900px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-      <tbody>
-        <tr>
-          <td style="padding:20px">
+    <div class="project-container">
 
-            <p><a href="../index.html">← Back to home</a></p>
+      <p><a href="../index.html">← Back to home</a></p>
 
-            <p style="text-align:center">
-              <name>XPENG Robotics — Humanoid Dexterous Hand Manipulation</name>
-            </p>
+      <p class="project-title">XPENG Humanoid – Dexterous Hand Manipulation</p>
 
-            <p style="text-align:center">
-              <em>Embodied Intelligence Intern</em> | Shenzhen, China | 05/2025 – 09/2025
-            </p>
+      <p class="project-meta">
+        <em>XPENG Robotics</em> | 05/2025 – 09/2025
+      </p>
 
-            <p style="text-align:center">
-              <a href="#">video (placeholder)</a> &nbsp;/&nbsp; <a href="#">report (placeholder)</a>
-            </p>
+      <!-- Optional links -->
+      <!-- <p class="project-links"> -->
+        <!-- <a href="https://..." target="_blank">video</a> / -->
+        <!-- <a href="../reports/..." target="_blank">report</a> -->
+      <!-- </p> -->
 
-            <p>
-              <img src="../images/xpeng_hand.jpg" width="100%" alt="XPENG project media (placeholder image)">
-            </p>
+      <!-- ================= Overview ================= -->
+      <p class="section-title">Project Overview</p>
+      <ul>
+        <li>
+          Worked on a humanoid dexterous hand platform focusing on
+          <strong>adaptive compliance control</strong>,
+          <strong>high-speed retargeting optimization</strong>, and
+          <strong>learning-based fine-grained manipulation</strong>,
+          targeting robust interaction with fragile and rigid objects
+          under uncertain contact.
+        </li>
+      </ul>
 
-            <heading>Summary</heading>
-            <p>
-              (Placeholder) One paragraph summary of the problem and system.
-            </p>
+      <!-- ================= My Role ================= -->
+      <p class="section-title">My Role</p>
+      <ul>
+        <li>
+          <strong>Admittance &amp; Compliance Control:</strong>
+          Implemented an admittance control framework enabling adaptive
+          regulation of contact forces. Demonstrated safe manipulation
+          of fragile objects (e.g., balloons, chips) and compliant
+          response under rigid contact.
+        </li>
 
-            <heading>My Contributions</heading>
-            <ul>
-              <li>(Placeholder) What you implemented.</li>
-              <li>(Placeholder) Key technical approach.</li>
-              <li>(Placeholder) Quantitative or qualitative impact.</li>
-            </ul>
+        <li>
+          <strong>Retargeting Optimization:</strong>
+          Replaced NLopt-based optimization with a direct
+          <strong>QP formulation</strong>, reducing runtime from
+          ~40 ms to ~0.2 ms. Built a similarity analysis pipeline to
+          support fast batch evaluation of dexterous retargeting results.
+        </li>
 
-            <heading>Results</heading>
-            <ul>
-              <li>(Placeholder) Main result / metric.</li>
-              <li>(Placeholder) Robustness / generalization notes.</li>
-            </ul>
+        <li>
+          <strong>Learning-Based Manipulation:</strong>
+          Replicated state-of-the-art dexterous manipulation methods,
+          including
+          <a href="https://zhaohengyin.github.io/dexteritygen/" target="_blank"><strong>DexGen</strong></a>
+          (PPO-based trajectory optimization with diffusion filtering) and
+          <a href="https://maniptrans.github.io/" target="_blank"><strong>ManipTrans</strong></a>
+          (imitation learning combined with reinforcement learning for object-aware manipulation).
+        </li>
 
-            <heading>Notes</heading>
-            <p>
-              (Placeholder) Any extra context, assumptions, limitations, or future work.
-            </p>
+      </ul>
 
-            <p style="margin-top:30px"><a href="../index.html">← Back to home</a></p>
+      <!-- ================= Outcome ================= -->
+      <p class="section-title">Outcome &amp; Impact</p>
+      <ul>
+        <li>
+          Enabled robust, contact-aware dexterous manipulation across
+          diverse interaction scenarios.
+        </li>
+        <li>
+          Achieved <strong>200× speedup</strong> in retargeting
+          optimization, significantly improving iteration efficiency.
+        </li>
+        <li>
+          Established scalable evaluation supporting
+          <strong>30+ pose comparisons</strong> within minutes.
+        </li>
+        <li>
+          Validated learning-based manipulation pipelines applicable to
+          real-world humanoid hand systems.
+        </li>
+      </ul>
 
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <!-- ================= Demos ================= -->
+<p class="section-title">System Demonstrations</p>
+
+<p class="section-subtitle">Finger–Finger Interaction</p>
+
+<p>
+  These demos illustrate <strong>real-time dexterous retargeting</strong> during
+  close-proximity finger–finger interaction, emphasizing low-latency motion
+  mapping rather than compliance control.
+</p>
+
+<p>
+  <em>Note:</em> The ring and little fingers were disabled and are not equipped
+  with force or tactile sensing; no compliance control was applied to them.
+</p>
+
+<div class="project-hero two-col-video">
+  <div>
+    <video controls muted playsinline preload="metadata" style="width:100%;">
+      <source src="../media/xpeng/finger_rubbing_1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <p class="video-caption">Real-time finger–finger retargeting (demo 1)</p>
+  </div>
+
+  <div>
+    <video controls muted playsinline preload="metadata" style="width:100%;">
+      <source src="../media/xpeng/finger_rubbing_2.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <p class="video-caption">Real-time finger–finger retargeting (demo 2)</p>
+  </div>
+</div>
+
+
+      <p style="margin-top:30px;">
+        <a href="../index.html">← Back to home</a>
+      </p>
+
+    </div>
   </body>
 </html>
